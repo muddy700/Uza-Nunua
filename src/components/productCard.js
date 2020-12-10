@@ -1,19 +1,20 @@
 import React from 'react'
-import { Card, Typography, Image} from 'antd'
-import { } from '@ant-design/icons';
+import { Card, Typography, Image, Button } from 'antd'
+import { EnvironmentOutlined} from '@ant-design/icons';
 
-export const ProductCard = () => {
+export const ProductCard = (props) => {
     const {Meta } = Card
-    // const { Title } = Typography
+    const { setshowInfo, product } = props
 
     return (
         <Card
             hoverable
             style={{width : 280,  }}>
-            <Image alt="example" width={230} height={200} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" /> <br /> <br />
-            <Meta title="Laptop" />
-            <span>TSH 450,000</span> <br />
-            <span>Location : Cive</span>
+            <Image alt="example" width={230} height={200} src={product.url} /> <br /> <br />
+            <Meta title={product.name} />
+            <span>TSH {product.price}</span> <br />
+            <span> <EnvironmentOutlined  /> {product.location}</span>
+            <Button type="primary" style={{float: 'right'}} >View</Button>
         </Card>
     )
 }

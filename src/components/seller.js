@@ -1,18 +1,16 @@
-import {DesktopOutlined, PieChartOutlined, FileOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Typography , Layout , Menu , Breadcrumb, Input, Button, Space, Card, Row, Col } from 'antd'
 import React, { useState, } from 'react'
 import { ProductCard } from './productCard'
 import { PageFooter } from './footer'
 import { ProductDetails } from './productDetails'
-import { LoginForm, SignUpForm } from './loginForm'
-
-
-export const Container = () => {
+import { ProductForm } from './productForm'
+export const SellerPortal = () => {
     const { Header, Footer, Sider, Content } = Layout;
     const { Title } = Typography
 
     const initialProducts = [ ]
-    for (let i = 0; i < 20; i++){
+    for (let i = 0; i < 5; i++){
         initialProducts.push({name : 'Laptop', id : i, price : '450,000', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"})
     }
 
@@ -20,8 +18,6 @@ export const Container = () => {
     const [products, setproducts] = useState(initialProducts)
     const [showInfo, setshowInfo] = useState(true)
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [isModal2Visible, setIsModal2Visible] = useState(false);
-
 
     const productsList =  <Row gutter={[0, 24]} >
                             { products.map((data) => {return <Col  span={6} key={data.id}> <ProductCard setshowInfo={setshowInfo} product={data} />  </Col>})}
@@ -33,12 +29,13 @@ export const Container = () => {
         setcollapsed(!collapsed)
     }
 
-    const searchData = () => {
-
-    }
-    const showModal = () => {
+    const logOut = () => {
           setIsModalVisible(true);
       };
+    const showProductForm = () => {
+        setIsModalVisible(true)
+
+    }
 
     const toggleButton = collapsed ? <MenuUnfoldOutlined className="trigger" onClick={toggle} /> :
      <MenuFoldOutlined className="trigger"  onClick={toggle} />
@@ -46,28 +43,30 @@ export const Container = () => {
     return (<>
             <Layout >
                 <Sider theme="light" trigger={null} collapsible collapsed={collapsed}>
-                    <div className="logo" >{collapsed? "UZA \n NUNUA" : ''}</div>
+                    <div className="logo" >{collapsed? "SELLER \n NAME" : ''}</div>
                     <Menu defaultSelectedKeys={['1']} mode="inline">
-                        <Menu.Item key="1" icon={<PieChartOutlined />} >
+                        <Menu.Item key="1" >
                         Home
                         </Menu.Item>
-                        <Menu.Item key="2" icon={<PieChartOutlined />}>
-                        Option 2
+                        <Menu.Item key="2" >
+                        Profile
+                        </Menu.Item>
+                        <Menu.Item key="3" >
+                        Change Password
                         </Menu.Item>
                     </Menu>
                 </Sider>
                 <Layout>
                     <Header style={{backgroundColor: 'cadetblue', height: 110, display: 'flex', padding: 30, }}>
                         {toggleButton   }
-                        <Input placeholder="Search" onChange={searchData} style={{width : 600, marginLeft : 100, height : 50}}/>
-                        <Button type="primary" style={{height : 50, width : 100, marginLeft : 400}} onClick={showModal}>Uza</Button>
+                        <Button type="primary" style={{height : 50, width : 100, marginLeft : 700}} onClick={logOut}>Logout</Button>
                     </Header>
                     <Content style={{backgroundColor : 'gray'}}>
                         <Card style={{padding : 30,}}>
-                            {/* {productsList} */}
-                            {productInfo}
-                            <LoginForm setIsModalVisible={setIsModalVisible} isModalVisible={isModalVisible} setIsModal2Visible={setIsModalVisible} />
-                            <SignUpForm setIsModal2Visible={setIsModal2Visible} isModal2Visible={isModal2Visible} />
+                        <Button type="primary" onClick={showProductForm}>Post Ad</Button>
+                            {productsList}
+                            {/* {productInfo} */}
+                            <ProductForm setIsModalVisible={setIsModalVisible} isModalVisible={isModalVisible} />
                         </Card>
 
                     </Content>

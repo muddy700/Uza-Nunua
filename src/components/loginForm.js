@@ -22,34 +22,29 @@ const tailLayout2 = {
   },
 };
 
-
 export const LoginForm = (props) => {
-    const { setIsModalVisible, isModalVisible} = props
+    const { setIsModalVisible, isModalVisible, setIsModal2Visible} = props
 
     const onFinish = (values) => {
-    // console.log(values)
-    // setisValid(true)
   };
 
-  const onFinishFailed = (errorInfo) => {
-    // console.log('Failed:', errorInfo);
-  };
-
-
-
+const showSignUpForm = () => {
+    setIsModalVisible(false);
+    setIsModal2Visible(true)
+  }
   const handleOk = () => {
     setIsModalVisible(false);
   };
-
+  
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
   return (
     <>
-      <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null} >
-        <Card title="Fill The Form" style={{marginTop : 50}}>
-            <Form {...layout}  name="basic" initialValues={{remember: true, }} onFinish={onFinish}  onFinishFailed={onFinishFailed} >
+      <Modal visible={isModalVisible} onCancel={handleCancel} onOk={handleOk} footer={null} closable={false}>
+        <Card title="Fill The Form To Login" style={{marginTop : 50, border :'none'}}>
+            <Form {...layout}  name="basic" initialValues={{remember: false, }} onFinish={onFinish} >
                 <Form.Item  label="Phone Number" name="phoneNumber" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
                     <Input />
                 </Form.Item>
@@ -61,7 +56,7 @@ export const LoginForm = (props) => {
                 </Form.Item>
                 <Form.Item {...tailLayout2}> 
                 <label>Don't have an Account ? </label>
-                <Button type="link" > Sign Up </Button>
+                <Button type="link" onClick={showSignUpForm}> Sign Up </Button>
                 </Form.Item>
             </Form>
         </Card>
@@ -71,7 +66,7 @@ export const LoginForm = (props) => {
 }
 
 export const SignUpForm = (props) => {
-    const { setIsModalVisible, isModalVisible} = props
+    const { setIsModal2Visible, isModal2Visible} = props
 
     const onFinish = (values) => {
 
@@ -81,17 +76,17 @@ export const SignUpForm = (props) => {
   };
 
   const handleOk = () => {
-    setIsModalVisible(false);
+    setIsModal2Visible(false);
   };
 
   const handleCancel = () => {
-    setIsModalVisible(false);
+    setIsModal2Visible(false);
   };
 
   return (
     <>
-      <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null} >
-        <Card title="Fill The Form" style={{marginTop : 50}}>
+      <Modal visible={isModal2Visible} onOk={handleOk} onCancel={handleCancel} footer={null} closable={false}>
+        <Card title="Create Free Account" style={{marginTop : 50, textAlign: 'center', border :'none'}}>
             <Form {...layout}  name="basic" initialValues={{remember: true, }} onFinish={onFinish}  onFinishFailed={onFinishFailed} >
                 <Form.Item  label="Phone Number" name="phoneNumber" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
                     <Input />
@@ -103,7 +98,7 @@ export const SignUpForm = (props) => {
                     <Input.Password />
                 </Form.Item>
                 <Form.Item {...tailLayout}> 
-                <Button type="primary" htmlType="submit" > Sign UP </Button>
+                <Button type="primary" htmlType="submit" > Sign Up </Button>
                 </Form.Item>
             </Form>
         </Card>

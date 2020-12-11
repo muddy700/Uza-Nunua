@@ -6,7 +6,8 @@ import { UserOutlined, WhatsAppOutlined, MailOutlined, PhoneOutlined, MessageOut
 export const ProductDetails = (props) => {
 
     const rowStyle = { marginTop : 12 ,  }
-    const colStyle = { fontWeight : 'bold' , }
+    const colStyle = { fontWeight : 'bold' , textAlign: 'left' }
+    const colStyle2 = { textAlign: 'left' }
     const { product } = props
     const { Title} = Typography
     return (<>
@@ -35,21 +36,29 @@ export const ProductDetails = (props) => {
         </Space> 
         <Card title="Product Details" style={{width:'99%', height: 300, marginTop: 30, textAlign: 'center'}}>
             <Row style={rowStyle}>
-                <Col span={2} style={colStyle}> Name : </Col>
-                <Col span={6} >Laptop</Col>
-            </Row>
-            <Row style={rowStyle}>
-                <Col span={2} style={colStyle}> Price : </Col>
-                <Col span={6} > TSH 450,000 </Col>
-            </Row>
-            <Row style={rowStyle}>
-                <Col span={2} style={colStyle}> Negotiatable : </Col>
-                <Col span={6} > Yes </Col>
-            </Row>
-            <Row style={rowStyle}>
-                <Col span={2} style={colStyle}> Location : </Col>
-                <Col span={6} > Cive </Col>
-            </Row>
+            <Col span={12}>
+                    <Row style={rowStyle}>
+                        <Col span={4} style={colStyle}> Name : </Col>
+                        <Col span={4} style={colStyle2} >Laptop</Col>
+                    </Row>
+                    <Row style={rowStyle}>
+                        <Col span={4} style={colStyle}> Name : </Col>
+                        <Col span={4} style={colStyle2} >Laptop</Col>
+                    </Row>
+                    <Row style={rowStyle}>
+                        <Col span={4} style={colStyle}> Name : </Col>
+                        <Col span={4} style={colStyle2} >Laptop</Col>
+                    </Row>
+                    <Row style={rowStyle}>
+                        <Col span={4} style={colStyle}> Name : </Col>
+                        <Col span={4} style={colStyle2} >Laptop</Col>
+                    </Row>
+                </Col>
+                <Col span={12}>
+                    <Divider orientation="center"> Description </Divider>
+                    <p>Description Goes Here!.</p>
+                </Col>
+                </Row>
         </Card>
 
         </>

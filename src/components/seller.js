@@ -21,7 +21,7 @@ export const SellerPortal = (props) => {
     const [collapsed, setcollapsed] = useState(false)
     const [products, setproducts] = useState(initialProducts)
     const [showInfo, setshowInfo] = useState(true)
-    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [productModal, setproductModal] = useState(false);
     const [render, setrender] = useState(1)
 
     const toggle = () => {
@@ -29,7 +29,8 @@ export const SellerPortal = (props) => {
     }
     
     const showProductForm = () => {
-        setIsModalVisible(true)
+        setproductModal(true)
+        console.log("clicked")
         
     }
     
@@ -77,6 +78,7 @@ export const SellerPortal = (props) => {
                         <Card style={{padding : 30,}}>
                             <Button type="primary" onClick={showProductForm} >Post Ad</Button>
                             {components[render]}
+                            <ProductForm productModal={productModal} setproductModal={setproductModal} />
                         </Card>
                     </Content>
                     <Footer style={{backgroundColor: 'gray', width: '100%', height: 500}}>

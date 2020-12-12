@@ -14,7 +14,7 @@ const layout = {
 
 export const ProductForm = (props) => {
   const {TextArea } = Input
-    const { setIsModalVisible, isModalVisible } = props
+    const { setproductModal, productModal } = props
     const productTypes = [
       {id : 1, name : 'Electronic'},
       {id : 1, name : 'Electronic'},
@@ -30,16 +30,16 @@ export const ProductForm = (props) => {
   };
 
   const handleOk = () => {
-    setIsModalVisible(false);
+    setproductModal(false);
   };
   
   const handleCancel = () => {
-    setIsModalVisible(false);
+    setproductModal(false);
   };
 
   return (
     <>
-      <Modal visible={isModalVisible} onCancel={handleCancel} onOk={handleOk} footer={null} closable={false} width={900}>
+      <Modal visible={productModal} onCancel={handleCancel} onOk={handleOk} footer={null} closable={false} width={900}>
             <Divider orientation="center">Fill Product Details</Divider>
             <Form {...layout}  name="basic" initialValues={{remember: false, }} onFinish={onFinish} >
               <Row>

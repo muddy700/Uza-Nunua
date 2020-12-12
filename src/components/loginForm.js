@@ -23,27 +23,27 @@ const tailLayout2 = {
 };
 
 export const LoginForm = (props) => {
-    const { setIsModalVisible, isModalVisible, setIsModal2Visible, setrender} = props
+    const { setloginModal, loginModal, setsignUpModal, setrender} = props
 
     const onFinish = (values) => {
   };
 
 const showSignUpForm = () => {
-    setIsModal2Visible(true)
-    setIsModalVisible(false)
+    setsignUpModal(true)
+    setloginModal(false)
     console.log("yes called")
   }
   const handleOk = () => {
-    setIsModalVisible(false);
+    setloginModal(false);
   };
   
   const handleCancel = () => {
-    setIsModalVisible(false);
+    setloginModal(false);
   };
 
   return (
     <>
-      <Modal visible={isModalVisible} onCancel={handleCancel} onOk={handleOk} footer={null} closable={false}>
+      <Modal visible={loginModal} onCancel={handleCancel} onOk={handleOk} footer={null} closable={false}>
             <Divider orientation="center">Login Form</Divider>
             <Form {...layout}  name="basic" initialValues={{remember: false, }} onFinish={onFinish} >
                 <Form.Item  label="Phone Number" name="phoneNumber" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
@@ -66,7 +66,7 @@ const showSignUpForm = () => {
 }
 
 export const SignUpForm = (props) => {
-    const { setIsModal2Visible, isModal2Visible} = props
+    const { setsignUpModal, signUpModal} = props
 
     const onFinish = (values) => {
 
@@ -76,16 +76,16 @@ export const SignUpForm = (props) => {
   };
 
   const handleOk = () => {
-    setIsModal2Visible(false);
+    setsignUpModal(false);
   };
 
   const handleCancel = () => {
-    setIsModal2Visible(false);
+    setsignUpModal(false);
   };
 
   return (
     <>
-      <Modal visible={isModal2Visible} onOk={handleOk} onCancel={handleCancel} footer={null} closable={false}>
+      <Modal visible={signUpModal} onOk={handleOk} onCancel={handleCancel} footer={null} closable={false}>
             <Divider orientation="center">Create Free Account</Divider>
             <Form {...layout}  name="basic" initialValues={{remember: true, }} onFinish={onFinish}  onFinishFailed={onFinishFailed} >
                 <Form.Item  label="Phone Number" name="phoneNumber" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
@@ -93,6 +93,9 @@ export const SignUpForm = (props) => {
                 </Form.Item>
                 <Form.Item  label="username" name="username" rules={[{required: true, message: 'Please input your Username', }, ]}>
                     <Input />
+                </Form.Item>
+                <Form.Item label="Email" name="email" rules={[{ required : true , type : 'email' , message : 'Email Required!'}]} hasFeedback>
+                    <Input placeholder="Enter Email" />
                 </Form.Item>
                 <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Please input your password!', }, ]} >
                     <Input.Password />

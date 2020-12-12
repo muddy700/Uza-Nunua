@@ -7,9 +7,10 @@ import { ProductDetails } from './productDetails'
 import { LoginForm, SignUpForm } from './loginForm'
 
 
-export const Container = () => {
+export const Container = (props) => {
     const { Header, Footer, Sider, Content } = Layout;
     const { Title } = Typography
+    const {setrender } = props
 
     const initialProducts = [ ]
     for (let i = 0; i < 20; i++){
@@ -34,7 +35,7 @@ export const Container = () => {
     }
 
     const searchData = () => {
-
+        console.log("container")
     }
     const showModal = () => {
           setIsModalVisible(true);
@@ -64,9 +65,9 @@ export const Container = () => {
                     </Header>
                     <Content style={{backgroundColor : 'gray'}}>
                         <Card style={{padding : 30,}}>
-                            {/* {productsList} */}
-                            {productInfo}
-                            <LoginForm setIsModalVisible={setIsModalVisible} isModalVisible={isModalVisible} setIsModal2Visible={setIsModalVisible} />
+                            {productsList}
+                            {/* {productInfo} */}
+                            <LoginForm setIsModalVisible={setIsModalVisible} isModalVisible={isModalVisible} setrender={setrender} setIsModal2Visible={setIsModal2Visible} />
                             <SignUpForm setIsModal2Visible={setIsModal2Visible} isModal2Visible={isModal2Visible} />
                         </Card>
 

@@ -11,18 +11,6 @@ const layout = {
     span: 16,
   },
 };
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
-  },
-};
-const tailLayout2 = {
-  wrapperCol: {
-    offset: 8,
-    span: 20,
-  },
-};
 
 export const ProductForm = (props) => {
   const {TextArea } = Input
@@ -51,13 +39,15 @@ export const ProductForm = (props) => {
 
   return (
     <>
-      <Modal visible={isModalVisible} onCancel={handleCancel} onOk={handleOk} footer={null} closable={false}>
+      <Modal visible={isModalVisible} onCancel={handleCancel} onOk={handleOk} footer={null} closable={false} width={900}>
             <Divider orientation="center">Fill Product Details</Divider>
             <Form {...layout}  name="basic" initialValues={{remember: false, }} onFinish={onFinish} >
+              <Row>
+                <Col span={12}>
                 <Form.Item  label="Product Name" name="" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
                     <Input />
                 </Form.Item>
-                <Form.Item label="Product Type" name="" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
+                <Form.Item label="Product Type" name="k" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
                   <Select placeholder = "---Select Option---" > {options} </Select>
                 </Form.Item>
                 <Form.Item label="Product Type" name="" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
@@ -66,23 +56,27 @@ export const ProductForm = (props) => {
                 <Form.Item label="Product Type" name="" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
                   <Select placeholder = "---Select Option---" > {options} </Select>
                 </Form.Item>
-                <Form.Item label="Product Type" name="" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
+                <Form.Item label="Product Type" name="h" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
                   <Select placeholder = "---Select Option---" > {options} </Select>
                 </Form.Item>
-                <Form.Item  label="Images" name="pic" rules={[{required: true, message: 'Price Can not be blank!', }, ]} >
-                     <Upload action="https://www.mocky.io/v2/5cc8019d300000980a055e76" listType="picture" defaultFileList={[...fileList]} multiple={true} >
-                        <Button icon={<UploadOutlined />}>Upload</Button>
-                      </Upload>
-                </Form.Item>
-                <Form.Item  label="Price" name="" rules={[{required: true, message: 'Price Can not be blank!', }, ]} >
-                    <InputNumber />
-                </Form.Item>
+                </Col>
+                <Col span={12}>
                 <Form.Item  label="Description" name="" rules={[{required: true, message: 'Price Can not be blank!', }, ]}>
                     <TextArea rows={3} />
                 </Form.Item>
-                <Form.Item {...tailLayout}> 
+                <Form.Item  label="Price" name="" rules={[{required: true, message: 'Price Can not be blank!', }, ]} >
+                    <InputNumber style={{width: '100%'}} />
+                </Form.Item>
+                <Form.Item  label="Images" name="pic" rules={[{required: true, message: 'Price Can not be blank!', }, ]} >
+                     <Upload action="https://www.mocky.io/v2/5cc8019d300000980a055e76" listType="picture" defaultFileList={[...fileList]} multiple >
+                        <Button icon={<UploadOutlined />}>Upload</Button>
+                      </Upload>
+                </Form.Item>
+                <Form.Item style={{float: 'right'}}> 
                 <Button type="primary" htmlType="submit" >Post</Button>
                 </Form.Item>
+                </Col>
+              </Row>
             </Form>
       </Modal>
     </>

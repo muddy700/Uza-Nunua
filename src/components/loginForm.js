@@ -1,4 +1,4 @@
-import { Modal, Form, Input, Card , Button, Checkbox , Row , Col } from 'antd';
+import { Modal, Form, Input, Card , Button, Checkbox , Row , Col, Divider } from 'antd';
 import React , { useState } from 'react'
 
 const layout = {
@@ -23,14 +23,15 @@ const tailLayout2 = {
 };
 
 export const LoginForm = (props) => {
-    const { setIsModalVisible, isModalVisible, setIsModal2Visible} = props
+    const { setIsModalVisible, isModalVisible, setIsModal2Visible, setrender} = props
 
     const onFinish = (values) => {
   };
 
 const showSignUpForm = () => {
-    setIsModalVisible(false);
     setIsModal2Visible(true)
+    setIsModalVisible(false)
+    console.log("yes called")
   }
   const handleOk = () => {
     setIsModalVisible(false);
@@ -43,7 +44,7 @@ const showSignUpForm = () => {
   return (
     <>
       <Modal visible={isModalVisible} onCancel={handleCancel} onOk={handleOk} footer={null} closable={false}>
-        <Card title="Fill The Form To Login" style={{marginTop : 50, border :'none'}}>
+            <Divider orientation="center">Login Form</Divider>
             <Form {...layout}  name="basic" initialValues={{remember: false, }} onFinish={onFinish} >
                 <Form.Item  label="Phone Number" name="phoneNumber" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
                     <Input />
@@ -52,14 +53,13 @@ const showSignUpForm = () => {
                     <Input.Password />
                 </Form.Item>
                 <Form.Item {...tailLayout}> 
-                <Button type="primary" htmlType="submit" > Sign In </Button>
+                <Button type="primary" onClick={setrender} > Sign In </Button>
                 </Form.Item>
                 <Form.Item {...tailLayout2}> 
                 <label>Don't have an Account ? </label>
                 <Button type="link" onClick={showSignUpForm}> Sign Up </Button>
                 </Form.Item>
             </Form>
-        </Card>
       </Modal>
     </>
   );
@@ -86,7 +86,7 @@ export const SignUpForm = (props) => {
   return (
     <>
       <Modal visible={isModal2Visible} onOk={handleOk} onCancel={handleCancel} footer={null} closable={false}>
-        <Card title="Create Free Account" style={{marginTop : 50, textAlign: 'center', border :'none'}}>
+            <Divider orientation="center">Create Free Account</Divider>
             <Form {...layout}  name="basic" initialValues={{remember: true, }} onFinish={onFinish}  onFinishFailed={onFinishFailed} >
                 <Form.Item  label="Phone Number" name="phoneNumber" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
                     <Input />
@@ -101,7 +101,6 @@ export const SignUpForm = (props) => {
                 <Button type="primary" htmlType="submit" > Sign Up </Button>
                 </Form.Item>
             </Form>
-        </Card>
       </Modal>
     </>
   );

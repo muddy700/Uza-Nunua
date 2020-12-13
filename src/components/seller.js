@@ -11,7 +11,7 @@ import { PasswordForm } from './password'
 export const SellerPortal = (props) => {
     const { Header, Footer, Sider, Content } = Layout;
     const { Title } = Typography
-    const { logout } = props
+    const { logout, categories, conditions, setProducts } = props
 
     const initialProducts = [ ]
     for (let i = 0; i < 5; i++){
@@ -78,7 +78,7 @@ export const SellerPortal = (props) => {
                         <Card style={{padding : 30,}}>
                             <Button type="primary" onClick={showProductForm} >Post Ad</Button>
                             {components[render]}
-                            <ProductForm productModal={productModal} setproductModal={setproductModal} />
+                            <ProductForm productModal={productModal} setproductModal={setproductModal} categories={categories} conditions={conditions} setProducts={setproducts} />
                         </Card>
                     </Content>
                     <Footer style={{backgroundColor: 'gray', width: '100%', height: 500}}>

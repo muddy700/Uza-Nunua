@@ -1,4 +1,4 @@
-import { Modal, Form, Input, Card , Button, Checkbox , Row , Col, Divider } from 'antd';
+import { Modal, Form, Input, Card , Button, Checkbox , Row , Col, Divider, InputNumber } from 'antd';
 import React , { useState } from 'react'
 
 const layout = {
@@ -26,6 +26,8 @@ export const LoginForm = (props) => {
     const { setloginModal, loginModal, setsignUpModal, setrender} = props
 
     const onFinish = (values) => {
+      console.log(values)
+      setrender()
   };
 
 const showSignUpForm = () => {
@@ -47,13 +49,13 @@ const showSignUpForm = () => {
             <Divider orientation="center">Login Form</Divider>
             <Form {...layout}  name="basic" initialValues={{remember: false, }} onFinish={onFinish} >
                 <Form.Item  label="Phone Number" name="phoneNumber" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
-                    <Input />
+                    <InputNumber style={{width: '100%'}} />
                 </Form.Item>
                 <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Please input your password!', }, ]} >
                     <Input.Password />
                 </Form.Item>
                 <Form.Item {...tailLayout}> 
-                <Button type="primary" onClick={setrender} > Sign In </Button>
+                <Button type="primary" htmlType="submit"> Sign In </Button>
                 </Form.Item>
                 <Form.Item {...tailLayout2}> 
                 <label>Don't have an Account ? </label>
@@ -69,6 +71,7 @@ export const SignUpForm = (props) => {
     const { setsignUpModal, signUpModal} = props
 
     const onFinish = (values) => {
+      console.log(values)
 
   };
 
@@ -89,7 +92,7 @@ export const SignUpForm = (props) => {
             <Divider orientation="center">Create Free Account</Divider>
             <Form {...layout}  name="basic" initialValues={{remember: true, }} onFinish={onFinish}  onFinishFailed={onFinishFailed} >
                 <Form.Item  label="Phone Number" name="phoneNumber" rules={[{required: true, message: 'Please input your Phone Number!', }, ]}>
-                    <Input />
+                    <InputNumber style={{width: '100%'}}/>
                 </Form.Item>
                 <Form.Item  label="username" name="username" rules={[{required: true, message: 'Please input your Username', }, ]}>
                     <Input />

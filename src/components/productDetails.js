@@ -39,19 +39,19 @@ export const ProductDetails = (props) => {
             <Col span={12}>
                     <Row style={rowStyle}>
                         <Col span={4} style={colStyle}> Name : </Col>
-                        <Col span={4} style={colStyle2} >Laptop</Col>
+                        <Col span={4} style={colStyle2} >{product.name}</Col>
                     </Row>
                     <Row style={rowStyle}>
-                        <Col span={4} style={colStyle}> Name : </Col>
-                        <Col span={4} style={colStyle2} >Laptop</Col>
+                        <Col span={4} style={colStyle}> Price : TSH </Col>
+                        <Col span={4} style={colStyle2} >{product.price} /=</Col>
                     </Row>
                     <Row style={rowStyle}>
-                        <Col span={4} style={colStyle}> Name : </Col>
-                        <Col span={4} style={colStyle2} >Laptop</Col>
+                        <Col span={4} style={colStyle}> Category : </Col>
+                        <Col span={4} style={colStyle2} >{product.category}</Col>
                     </Row>
                     <Row style={rowStyle}>
-                        <Col span={4} style={colStyle}> Name : </Col>
-                        <Col span={4} style={colStyle2} >Laptop</Col>
+                        <Col span={4} style={colStyle}> Location : </Col>
+                        <Col span={4} style={colStyle2} >{product.location}</Col>
                     </Row>
                 </Col>
                 <Col span={12}>

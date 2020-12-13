@@ -4,7 +4,11 @@ import { EnvironmentOutlined} from '@ant-design/icons';
 
 export const ProductCard = (props) => {
     const {Meta } = Card
-    const { setshowInfo, product, settingMode, showProductForm } = props
+    const { product, settingMode, showProductForm, setviewMode, setId } = props
+    const showProductInfo = (id) => {
+        setviewMode(true)
+        setId(id)
+    }
 
     return (
         <Card
@@ -14,7 +18,7 @@ export const ProductCard = (props) => {
             <Meta title={product.name} />
             <span>TSH {product.price}</span> <br />
             <span> <EnvironmentOutlined  /> {product.location}</span>
-            <Button type="primary" style={{float: 'right'}} hidden={settingMode} >View</Button> 
+            <Button type="primary" style={{float: 'right'}} hidden={settingMode} onClick={() => showProductInfo(product.id)}>View</Button> 
             <Button type="default" style={{float: 'right'}} hidden={!settingMode}>Disable</Button> 
             <Button type="primary" style={{float: 'right'}} hidden={!settingMode} onClick={showProductForm}>Edit</Button> 
         </Card>

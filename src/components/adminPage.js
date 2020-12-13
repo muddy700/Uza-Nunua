@@ -7,7 +7,7 @@ import { ProductForm } from './productForm'
 import { SellerProfile } from './sellerProfile'
 import { PasswordForm } from './password'
 
-export const SellerPortal = (props) => {
+export const AdminPortal = (props) => {
     const { Header, Footer, Sider, Content } = Layout;
     const { logout, categories, conditions, setProducts } = props
 
@@ -71,7 +71,7 @@ export const SellerPortal = (props) => {
                 <Layout>
                     <Header style={{backgroundColor: 'cadetblue', height: 110, display: 'flex', padding: 30, }}>
                      {toggleButton   }
-                      <span style={{marginLeft: '40%'}}>Welcome To Uza Nunua</span>
+                      <span style={{marginLeft: '40%'}}>ADMIN</span>
                         <Button type="link" style={{height : 50, width : 100, marginLeft: '40%', color: 'white'}} onClick={logout}>Logout <LogoutOutlined /> </Button>
                     </Header>
                     <Content style={{backgroundColor : 'gray'}}>

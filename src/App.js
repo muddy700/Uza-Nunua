@@ -3,6 +3,7 @@ import './App.css';
 import React, { useState} from 'react'
 import { Container} from './components/container'
 import { SellerPortal } from './components/seller'
+import { AdminPortal } from './components/adminPage'
 
 const  App = () => {
   const categories = [
@@ -26,7 +27,7 @@ const  App = () => {
   for (let i = 6; i < 10; i++){
         initialProducts.push({name : 'Laptop', id : i, price : '450,000', category: 'Electronics', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"})
     }
-  const [render, setrender] = useState(1)
+  const [render, setrender] = useState(3)
   const [products, setproducts] = useState(initialProducts)
 
   const showLoginPage = () => {
@@ -37,10 +38,12 @@ const  App = () => {
   }
   const homePage = <Container setrender={showLoginPage} categories={categories} products={products} />
   const sellerPage = <SellerPortal logout={showHomePage} categories={categories} conditions={conditions} setproducts={setproducts} />
+  const adminPage = <AdminPortal logout={showHomePage} categories={categories} conditions={conditions} setproducts={setproducts} />
 
   const pages = {
     1 : homePage,
-    2 : sellerPage
+    2 : sellerPage,
+    3 : adminPage
   }
   return (
     <div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Typography, Image, Button } from 'antd'
+import { Card, Row, Col, Image, Button } from 'antd'
 import { EnvironmentOutlined} from '@ant-design/icons';
 
 export const ProductCard = (props) => {
@@ -11,10 +11,13 @@ export const ProductCard = (props) => {
     }
 
     return (
+    // <Row>
+    // <Col span={24} >
         <Card
             hoverable
-            style={{width : 280,  }}>
-            <Image alt="example" width={230} height={200} src={product.url} preview={false}/> <br /> <br />
+            style={{width : '100%', }}
+            >
+            <Image alt="example" width={'100%'} height={250} src={product.url} preview={false}/> <br /> <br />
             <Meta title={product.name} />
             <span>TSH {product.price}</span> <br />
             <span> <EnvironmentOutlined  /> {product.location}</span>
@@ -22,6 +25,8 @@ export const ProductCard = (props) => {
             <Button type="default" style={{float: 'right'}} hidden={!settingMode}>Delete</Button> 
             <Button type="primary" style={{float: 'right'}} hidden={!settingMode} onClick={showProductForm}>Edit</Button> 
         </Card>
+        // </Col>
+        //  </Row>
     )
 }
 

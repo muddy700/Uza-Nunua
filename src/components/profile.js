@@ -4,7 +4,7 @@ const { Meta } = Card
 const rowStyle = { marginTop : 12 ,  }
 const colStyle = { fontWeight : 'bold' , }
 
-export const SellerProfile = (props) => {
+export const Profile = (props) => {
     const {loggedUser} = props
     // const name = loggedUser.firstName + ' ' + loggedUser.lastName
     return(

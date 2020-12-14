@@ -1,25 +1,25 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined, DashboardOutlined, UserOutlined, KeyOutlined, LogoutOutlined } from '@ant-design/icons';
-import { Typography , Layout , Menu , Button, Card, Row, Col } from 'antd'
+import { Layout , Menu , Button, Card, Row, Col } from 'antd'
+import { ProductForm } from '../components/productForm'
+import { ProductCard } from '../components/productCard'
+import { PasswordForm } from '../components/password'
+import { PageFooter } from '../components/footer'
+import { Profile } from '../components/profile'
 import React, { useState, } from 'react'
-import { ProductCard } from './productCard'
-import { PageFooter } from './footer'
-import { ProductForm } from './productForm'
-import { SellerProfile } from './sellerProfile'
-import { PasswordForm } from './password'
 
 export const SellerPortal = (props) => {
-    const { Header, Footer, Sider, Content } = Layout;
     const { logout, categories, conditions, setProducts } = props
+    const { Header, Footer, Sider, Content } = Layout;
 
     const initialProducts = [ ]
     for (let i = 0; i < 5; i++){
         initialProducts.push({name : 'Laptop', id : i, price : '450,000', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"})
     }
 
-    const [collapsed, setcollapsed] = useState(false)
-    const [products, setproducts] = useState(initialProducts)
-    const [showInfo, setshowInfo] = useState(true)
+    const [sellerProducts, setsellerProducts] = useState(initialProducts)
     const [productModal, setproductModal] = useState(false);
+    const [collapsed, setcollapsed] = useState(false)
+    const [showInfo, setshowInfo] = useState(true)
     const [render, setrender] = useState(1)
 
     const toggle = () => {
@@ -28,8 +28,6 @@ export const SellerPortal = (props) => {
     
     const showProductForm = () => {
         setproductModal(true)
-        console.log("clicked")
-        
     }
     
     const toggleButton = collapsed ? <MenuUnfoldOutlined className="trigger" onClick={toggle} /> :
@@ -39,12 +37,12 @@ export const SellerPortal = (props) => {
         setrender(menu.key)
     }
     const dashboard =  <Row gutter={[0, 24]} >
-                            { products.map((data) => {return <Col  span={6} key={data.id}>
+                            { sellerProducts.map((data) => {return <Col  span={6} key={data.id}>
                             <ProductCard setshowInfo={setshowInfo} showProductForm={showProductForm} 
                             settingMode={true} product={data} />  </Col>})}
                         </Row>
-    const profile = <SellerProfile / >
     const settings = <PasswordForm / >
+    const profile = <Profile / >
 
     const components = {
         1 : dashboard,
@@ -78,7 +76,7 @@ export const SellerPortal = (props) => {
                         <Card style={{padding : 30,}}>
                             <Button type="primary" onClick={showProductForm} >Post Ad</Button>
                             {components[render]}
-                            <ProductForm productModal={productModal} setproductModal={setproductModal} categories={categories} conditions={conditions} setProducts={setproducts} />
+                            <ProductForm productModal={productModal} setproductModal={setproductModal} categories={categories} conditions={conditions} setProducts={setProducts} />
                         </Card>
                     </Content>
                     <Footer style={{backgroundColor: 'gray', width: '100%', height: 500}}>

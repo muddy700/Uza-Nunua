@@ -1,5 +1,4 @@
-import { Modal, Form, Input, Card , Button, Checkbox , Row , Col, Divider, InputNumber } from 'antd';
-import React , { useState } from 'react'
+import { Modal, Form, Input, Button, Divider, InputNumber } from 'antd';
 
 const layout = {
   labelCol: {

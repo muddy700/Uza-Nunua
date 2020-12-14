@@ -1,18 +1,18 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined, DashboardOutlined, UserOutlined, KeyOutlined, LogoutOutlined } from '@ant-design/icons';
 import { Layout , Menu , Button, Card, Row, Col } from 'antd'
 import React, { useState, } from 'react'
-import { ProductCard } from './productCard'
-import { PageFooter } from './footer'
-import { ProductForm } from './productForm'
-import { SellerProfile } from './sellerProfile'
-import { PasswordForm } from './password'
-import { AdminDashboard} from './admindashboard'
-import { SellersList } from './sellersTable'
+import { ProductCard } from '../components/productCard'
+import { PageFooter } from '../components/footer'
+import { ProductForm } from '../components/productForm'
+import { Profile } from '../components/profile'
+import { PasswordForm } from '../components/password'
+import { AdminDashboard} from '../components/admindashboard'
+import { SellersList } from '../components/sellersTable'
 
 
 export const AdminPortal = (props) => {
+    const { logout, categories, conditions } = props
     const { Header, Footer, Sider, Content } = Layout;
-    const { logout, categories, conditions, setProducts } = props
 
     const initialProducts = [ 
     {name : 'Laptop2', id : 1, sellerId: 2, price : '450,000', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"},
@@ -21,10 +21,10 @@ export const AdminPortal = (props) => {
     {name : 'Seller1-2', id : 4, sellerId: 1, price : '450,000', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"},
     {name : 'Laptop2', id : 5, sellerId: 2, price : '450,000', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"},
     ]
-    const [collapsed, setcollapsed] = useState(false)
     const [products, setproducts] = useState(initialProducts)
-    const [showInfo, setshowInfo] = useState(true)
     const [productModal, setproductModal] = useState(false);
+    const [collapsed, setcollapsed] = useState(false)
+    const [showInfo, setshowInfo] = useState(true)
     const [render, setrender] = useState(1)
 
     const toggle = () => {
@@ -43,6 +43,7 @@ export const AdminPortal = (props) => {
     const changeComponent = (menu) => {
         setrender(menu.key)
     }
+    
     const dashboard = <AdminDashboard />
     const sellers = <SellersList products={products}/>
     const Myproducts =  <Row gutter={[0, 24]} >
@@ -50,7 +51,7 @@ export const AdminPortal = (props) => {
                             <ProductCard setshowInfo={setshowInfo} showProductForm={showProductForm} 
                             settingMode={true} product={data} />  </Col>})}
                         </Row>
-    const profile = <SellerProfile / >
+    const profile = <Profile / >
     const settings = <PasswordForm / >
 
     const components = {

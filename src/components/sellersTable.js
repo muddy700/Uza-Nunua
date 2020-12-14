@@ -170,7 +170,7 @@ useEffect(() => {
             <Card title="All Sellers" style={{border: 'none'}} hidden={showProducts}>
             <Button type="primary" disabled={!trigger} onClick={deleteUsers} loading={loading}>Delete</Button>
             <span style={{ marginLeft: 8 }} >{hasSelected ? selectedSize + tableTitle : '' } </span>
-            <Input placeholder="Type Anything To Search"  onChange={findUser} loading={searchingMode}  style={{width : 500, marginLeft : 200}}/>
+            {/* <Input placeholder="Type Anything To Search"  onChange={findUser} loading={searchingMode}  style={{width : 500, marginLeft : 200}}/> */}
             {/* <Button type="primary" style={{float : "right"}} onClick={showUserForm}>Add Seller</Button> */}
             <Card hidden={!found.user_id}>{!found ? ' User Not Found' : found.user_id + ' == ' + found.username + ' == ' + found.email + ' == ' + found.password + ' == ' + found.enabled} </Card>
             <Table rowSelection={rowSelection} columns={columns} dataSource={dataList} pagination={{defaultPageSize : 5}} rowKey={(record) => record.user_id} />

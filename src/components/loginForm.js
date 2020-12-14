@@ -26,8 +26,8 @@ export const LoginForm = (props) => {
     const { setloginModal, loginModal, setsignUpModal, setrender} = props
 
     const onFinish = (values) => {
-      console.log(values)
-      setrender()
+      // console.log(values.phoneNumber)
+      setrender(values.phoneNumber)
   };
 
 const showSignUpForm = () => {

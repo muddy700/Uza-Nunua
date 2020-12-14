@@ -1,5 +1,0 @@
-position: 'fixed',  zIndex: 1, width: '100%' -- Header
-
-style={{height : 800}} -- Layout
-
-style={{paddingTop: 110}} -- Row

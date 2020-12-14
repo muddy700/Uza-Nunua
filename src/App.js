@@ -27,16 +27,26 @@ const  App = () => {
   for (let i = 6; i < 10; i++){
         initialProducts.push({name : 'Laptop', id : i, price : '450,000', category: 'Electronics', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"})
     }
+  const users = [
+    {id: 1, username: 'Seller', password: 12, email: 'seller@gmail.com', phone: 3422, enabled: true, size: 10 },
+    {id: 2, username: 'Admin', password: 10, email: 'admin@gmail.com', phone: 100, enabled: true, size: 20 },
+
+  ]
   const [render, setrender] = useState(3)
   const [products, setproducts] = useState(initialProducts)
 
-  const showLoginPage = () => {
-    setrender(2)
+  const showLoginPage = (phone) => {
+    if(phone === 100 ){
+      setrender(3)
+    }
+    else{
+      setrender(2)
+    }
   }
   const showHomePage = () => {
     setrender(1)
   }
-  const homePage = <Container setrender={showLoginPage} categories={categories} products={products} />
+  const homePage = <Container setrender={showLoginPage} categories={categories} products={products} users={users}/>
   const sellerPage = <SellerPortal logout={showHomePage} categories={categories} conditions={conditions} setproducts={setproducts} />
   const adminPage = <AdminPortal logout={showHomePage} categories={categories} conditions={conditions} setproducts={setproducts} />
 

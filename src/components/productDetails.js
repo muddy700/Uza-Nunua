@@ -17,9 +17,9 @@ export const ProductDetails = (props) => {
                 <Divider />
                 <Space size={20}>
                     <Image  alt="example" width={70} height={70} src={product.url} preview={false}/>
-                    <Image  alt="example" width={70} height={70} src={product.url} />
-                    <Image  alt="example" width={70} height={70} src={product.url} />
-                    <Image  alt="example" width={70} height={70} src={product.url} />
+                    <Image  alt="example" width={70} height={70} src={product.url} preview={false}/>
+                    <Image  alt="example" width={70} height={70} src={product.url} preview={false}/>
+                    <Image  alt="example" width={70} height={70} src={product.url} preview={false}/>
                 </Space>
             </Card>
             <Card title="Seller Contacts" style={{width: 400, height: 640, float:'right', textAlign: 'center'}}>

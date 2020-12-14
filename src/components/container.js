@@ -12,7 +12,7 @@ export const Container = (props) => {
     const { Header, Footer, Sider, Content } = Layout;
     const { Title } = Typography
     const { SubMenu } = Menu
-    const {setrender, categories, products } = props
+    const {setrender, categories, products, users } = props
 
     const locations = [
         {id: 11, name: 'CHS'},

@@ -71,7 +71,7 @@ export const SellerPortal = (props) => {
                 <Layout>
                     <Header style={{backgroundColor: 'cadetblue', height: 110, display: 'flex', padding: 30, }}>
                      {toggleButton   }
-                      <span style={{marginLeft: '40%'}}>Welcome To Uza Nunua</span>
+                      <span style={{marginLeft: '40%'}}>    SELLER PAGE</span>
                         <Button type="link" style={{height : 50, width : 100, marginLeft: '40%', color: 'white'}} onClick={logout}>Logout <LogoutOutlined /> </Button>
                     </Header>
                     <Content style={{backgroundColor : 'gray'}}>

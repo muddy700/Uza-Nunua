@@ -1,21 +1,26 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined, DashboardOutlined, UserOutlined, KeyOutlined, LogoutOutlined } from '@ant-design/icons';
-import { Typography , Layout , Menu , Button, Card, Row, Col } from 'antd'
+import { Layout , Menu , Button, Card, Row, Col } from 'antd'
 import React, { useState, } from 'react'
 import { ProductCard } from './productCard'
 import { PageFooter } from './footer'
 import { ProductForm } from './productForm'
 import { SellerProfile } from './sellerProfile'
 import { PasswordForm } from './password'
+import { AdminDashboard} from './admindashboard'
+import { SellersList } from './sellersTable'
+
 
 export const AdminPortal = (props) => {
     const { Header, Footer, Sider, Content } = Layout;
     const { logout, categories, conditions, setProducts } = props
 
-    const initialProducts = [ ]
-    for (let i = 0; i < 5; i++){
-        initialProducts.push({name : 'Laptop', id : i, price : '450,000', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"})
-    }
-
+    const initialProducts = [ 
+    {name : 'Laptop2', id : 1, sellerId: 2, price : '450,000', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"},
+    {name : 'Seller1-1', id : 2, sellerId: 1, price : '450,000', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"},
+    {name : 'Laptop2', id : 3, sellerId: 2, price : '450,000', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"},
+    {name : 'Seller1-2', id : 4, sellerId: 1, price : '450,000', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"},
+    {name : 'Laptop2', id : 5, sellerId: 2, price : '450,000', location : 'Cive', url: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"},
+    ]
     const [collapsed, setcollapsed] = useState(false)
     const [products, setproducts] = useState(initialProducts)
     const [showInfo, setshowInfo] = useState(true)
@@ -38,7 +43,9 @@ export const AdminPortal = (props) => {
     const changeComponent = (menu) => {
         setrender(menu.key)
     }
-    const dashboard =  <Row gutter={[0, 24]} >
+    const dashboard = <AdminDashboard />
+    const sellers = <SellersList products={products}/>
+    const Myproducts =  <Row gutter={[0, 24]} >
                             { products.map((data) => {return <Col  span={6} key={data.id}>
                             <ProductCard setshowInfo={setshowInfo} showProductForm={showProductForm} 
                             settingMode={true} product={data} />  </Col>})}
@@ -48,8 +55,10 @@ export const AdminPortal = (props) => {
 
     const components = {
         1 : dashboard,
-        2 : profile,
-        3 : settings
+        2 : sellers,
+        3 : Myproducts,
+        4 : profile,
+        5 : settings
     }
     
     return (<>
@@ -60,10 +69,16 @@ export const AdminPortal = (props) => {
                         <Menu.Item key="1" icon={<DashboardOutlined />} onClick={changeComponent}>
                         Dashboard
                         </Menu.Item>
-                        <Menu.Item key="2" icon={<UserOutlined />} onClick={changeComponent}>
+                        <Menu.Item key="2" icon={<DashboardOutlined />} onClick={changeComponent}>
+                        Sellers
+                        </Menu.Item>
+                        <Menu.Item key="3" icon={<DashboardOutlined />} onClick={changeComponent}>
+                        My Products
+                        </Menu.Item>
+                        <Menu.Item key="4" icon={<UserOutlined />} onClick={changeComponent}>
                         Profile
                         </Menu.Item>
-                        <Menu.Item key="3" icon={<KeyOutlined />} onClick={changeComponent}>
+                        <Menu.Item key="5" icon={<KeyOutlined />} onClick={changeComponent}>
                         Change Password
                         </Menu.Item>
                     </Menu>
@@ -71,7 +86,7 @@ export const AdminPortal = (props) => {
                 <Layout>
                     <Header style={{backgroundColor: 'cadetblue', height: 110, display: 'flex', padding: 30, }}>
                      {toggleButton   }
-                      <span style={{marginLeft: '40%'}}>ADMIN</span>
+                      <span style={{marginLeft: '40%'}}>ADMIN PAGE</span>
                         <Button type="link" style={{height : 50, width : 100, marginLeft: '40%', color: 'white'}} onClick={logout}>Logout <LogoutOutlined /> </Button>
                     </Header>
                     <Content style={{backgroundColor : 'gray'}}>

@@ -14,12 +14,12 @@ export const ProductCard = (props) => {
         <Card
             hoverable
             style={{width : 280,  }}>
-            <Image alt="example" width={230} height={200} src={product.url} /> <br /> <br />
+            <Image alt="example" width={230} height={200} src={product.url} preview={false}/> <br /> <br />
             <Meta title={product.name} />
             <span>TSH {product.price}</span> <br />
             <span> <EnvironmentOutlined  /> {product.location}</span>
             <Button type="primary" style={{float: 'right'}} hidden={settingMode} onClick={() => showProductInfo(product.id)}>View</Button> 
-            <Button type="default" style={{float: 'right'}} hidden={!settingMode}>Disable</Button> 
+            <Button type="default" style={{float: 'right'}} hidden={!settingMode}>Delete</Button> 
             <Button type="primary" style={{float: 'right'}} hidden={!settingMode} onClick={showProductForm}>Edit</Button> 
         </Card>
     )

@@ -19,7 +19,7 @@ export const ProductDetails = (props) => {
     const { Title} = Typography
     return (<>
         <Space size={150}>
-             <Card title="Product Images" style={{width: 700, height:640, textAlign: 'center', padding:20}}>
+             {/* <Card title="Product Images" style={{width: 700, height:640, textAlign: 'center', padding:20}}>
                 <Image  alt="example" width={600} height={400} src={product.url} />
                 <Divider />
                 <Space size={20}>
@@ -28,7 +28,7 @@ export const ProductDetails = (props) => {
                     <Image  alt="example" width={70} height={70} src={product.url} preview={false}/>
                     <Image  alt="example" width={70} height={70} src={product.url} preview={false}/>
                 </Space>
-            </Card>
+            </Card> */}
             <Card title="Seller Contacts" style={{width: 400, height: 640, float:'right', textAlign: 'center'}}>
                 <Avatar size={64} icon={<UserOutlined />} /> 
                 <Title level={5} >MWAMEDI MUDDY</Title>
@@ -40,10 +40,13 @@ export const ProductDetails = (props) => {
                     <EmailShare email="timotheomhoja@gmail.com" subject="" body="Your message">
                     {link => ( <a href={link} data-rel="external"> <MailOutlined /> Email</a> )}
                     </EmailShare> </Button>
-                    <Button style={{width: 250}} > <PhoneOutlined />  Phone
-                    <PhoneNumber number="+255765281000" />
-                     </Button>
+                    <a href="tel:+255766842284">
+                    <Button style={{width: 250}} > <PhoneOutlined />  Phone</Button>
+                    </a>
+
+                    <a href="sms:+255766842284">
                     <Button style={{width: 250}}> <MessageOutlined />  SMS </Button>
+                    </a>
                 </Space>
             </Card>
         </Space> 

@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { } from 'react'
 import { Card, Space, Image , Divider, Avatar, Typography, Button, Row, Col} from 'antd'
 import { UserOutlined, WhatsAppOutlined, MailOutlined, PhoneOutlined, MessageOutlined } from '@ant-design/icons';
-
+import ReactWhatsapp from 'react-whatsapp';
+import EmailShare from 'react-email-share-link'
+import PhoneNumber from 'react-phone-number';
 
 export const ProductDetails = (props) => {
+
+    const createCall = () => {
+        // const url = 'tel:+255717963697'
+        // Linking.canopenURL(url)
+    }
 
     const rowStyle = { marginTop : 12 ,  }
     const colStyle = { fontWeight : 'bold' , textAlign: 'left' }
@@ -12,7 +19,7 @@ export const ProductDetails = (props) => {
     const { Title} = Typography
     return (<>
         <Space size={150}>
-            <Card title="Product Images" style={{width: 700, height:640, textAlign: 'center', padding:20}}>
+             <Card title="Product Images" style={{width: 700, height:640, textAlign: 'center', padding:20}}>
                 <Image  alt="example" width={600} height={400} src={product.url} />
                 <Divider />
                 <Space size={20}>
@@ -27,9 +34,15 @@ export const ProductDetails = (props) => {
                 <Title level={5} >MWAMEDI MUDDY</Title>
                 <Divider />
                 <Space direction="vertical" size={30}>
-                    <Button style={{width: 250}}> <WhatsAppOutlined />  WhatsApp </Button>
-                    <Button style={{width: 250}}> <MailOutlined />  Email </Button>
-                    <Button style={{width: 250}}> <PhoneOutlined />  Phone </Button>
+                    {/* <Button style={{width: 250}}> <WhatsAppOutlined />  WhatsApp </Button> */}
+                    <ReactWhatsapp number="+255743134313" style={{width: 250}}> <WhatsAppOutlined /> WhatsApp </ReactWhatsapp>
+                    <Button style={{width: 250}} > 
+                    <EmailShare email="timotheomhoja@gmail.com" subject="" body="Your message">
+                    {link => ( <a href={link} data-rel="external"> <MailOutlined /> Email</a> )}
+                    </EmailShare> </Button>
+                    <Button style={{width: 250}} > <PhoneOutlined />  Phone
+                    <PhoneNumber number="+255765281000" />
+                     </Button>
                     <Button style={{width: 250}}> <MessageOutlined />  SMS </Button>
                 </Space>
             </Card>

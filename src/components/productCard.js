@@ -15,7 +15,7 @@ export const ProductCard = (props) => {
     // <Col span={24} >
         <Card
             hoverable
-            style={{width : '100%', }}
+            style={{width : '90%', }}
             >
             <Image alt="example" width={'100%'} height={250} src={product.url} preview={false}/> <br /> <br />
             <Meta title={product.name} />

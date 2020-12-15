@@ -48,8 +48,9 @@ export const Home = (props) => {
     const productsList =  <Row gutter={[20, 20]} >
                             { arrayToMap.map((data) => {return <Col  xs={24} lg={6} key={data.id}> <ProductCard product={data} setviewMode={setviewMode} setId={setselectedProduct} />  </Col>})}
                         </Row>
-    const productInfo = <ProductDetails product={products[selectedProduct-1]} />
 
+const productInfo = <ProductDetails product={products[selectedProduct-1]} />
+// const productInfo = <ProductDetails product={products[1]} />
     const toggle = () => {
         setcollapsed(!collapsed)
     }

@@ -18,65 +18,73 @@ export const ProductDetails = (props) => {
     const { product } = props
     const { Title} = Typography
     return (<>
-        <Space size={150}>
-             {/* <Card title="Product Images" style={{width: 700, height:640, textAlign: 'center', padding:20}}>
-                <Image  alt="example" width={600} height={400} src={product.url} />
+    <Row>
+    <Col xs={24}>
+        {/* <Space size={150}> */}
+        <Row>
+        <Col xs={24} lg={10}>
+             <Card title="Images" style={{width: '100%', height:640, textAlign: 'center', padding:20}}>
+                <Image  alt="example" width={'100%'} height={400} src={product.url} />
                 <Divider />
-                <Space size={20}>
-                    <Image  alt="example" width={70} height={70} src={product.url} preview={false}/>
-                    <Image  alt="example" width={70} height={70} src={product.url} preview={false}/>
-                    <Image  alt="example" width={70} height={70} src={product.url} preview={false}/>
-                    <Image  alt="example" width={70} height={70} src={product.url} preview={false}/>
-                </Space>
-            </Card> */}
-            <Card title="Seller Contacts" style={{width: 400, height: 640, float:'right', textAlign: 'center'}}>
+                {/* <Space> */}
+                    <Image  alt="example" width={'20%'} height={70} src={product.url} preview={false}/>
+                    <Image  alt="example" width={'20%'} height={70} src={product.url} preview={false}/>
+                    <Image  alt="example" width={'20%'} height={70} src={product.url} preview={false}/>
+                    <Image  alt="example" width={'20%'} height={70} src={product.url} preview={false}/>
+                {/* </Space> */}
+            </Card>
+            </Col> &nbsp;
+            <Col xs={24} lg={{span:8, offset: 4}}>
+            <Card title="Seller Contacts" style={{width: '100%', textAlign: 'center'}}>
                 <Avatar size={64} icon={<UserOutlined />} /> 
                 <Title level={5} >MWAMEDI MUDDY</Title>
                 <Divider />
-                <Space direction="vertical" size={30}>
-                    {/* <Button style={{width: 250}}> <WhatsAppOutlined />  WhatsApp </Button> */}
-                    <ReactWhatsapp number="+255743134313" style={{width: 250}}> <WhatsAppOutlined /> WhatsApp </ReactWhatsapp>
-                    <Button style={{width: 250}} > 
-                    <EmailShare email="timotheomhoja@gmail.com" subject="" body="Your message">
-                    {link => ( <a href={link} data-rel="external"> <MailOutlined /> Email</a> )}
-                    </EmailShare> </Button>
-                    <a href="tel:+255766842284">
-                    <Button style={{width: 250}} > <PhoneOutlined />  Phone</Button>
+                {/* <Space direction="vertical" size={30}> */}
+                    <ReactWhatsapp number="+255717963697" style={{width: '90%', }}> <WhatsAppOutlined /> WhatsApp </ReactWhatsapp> <br /> <br />
+                    <Button style={{width: '90%'}} > 
+                        <EmailShare email="timotheomhoja@gmail.com" subject="" body="Your message">
+                        {link => ( <a href={link} data-rel="external"> <MailOutlined /> Email</a> )}
+                        </EmailShare>
+                     </Button>  <br /> <br />
+                    <a href="tel:+255717963697">
+                    <Button style={{width: '90%'}} > <PhoneOutlined />  Phone</Button>
+                    </a>  <br /> <br />
+                    <a href="sms:+255717963697">
+                    <Button style={{width: '90%'}}> <MessageOutlined />  SMS </Button>
                     </a>
-
-                    <a href="sms:+255766842284">
-                    <Button style={{width: 250}}> <MessageOutlined />  SMS </Button>
-                    </a>
-                </Space>
+                {/* </Space> */}
             </Card>
-        </Space> 
-        <Card title="Product Details" style={{width:'99%', height: 300, marginTop: 30, textAlign: 'center'}}>
+            </Col>
+        </Row>
+        {/* </Space>  */}
+        <Card title="Product Details" style={{width:'99%', marginTop: 30, textAlign: 'center'}}>
             <Row style={rowStyle}>
-            <Col span={12}>
+            <Col xs={24} lg={12} >
                     <Row style={rowStyle}>
-                        <Col span={4} style={colStyle}> Name : </Col>
-                        <Col span={4} style={colStyle2} >{product.name}</Col>
+                        <Col xs={10} lg={4} style={colStyle}> Name : </Col>
+                        <Col xs={12} lg={4} style={colStyle2} >{product.name}</Col>
                     </Row>
                     <Row style={rowStyle}>
-                        <Col span={4} style={colStyle}> Price : TSH </Col>
-                        <Col span={4} style={colStyle2} >{product.price} /=</Col>
+                        <Col xs={14} lg={4}style={colStyle}> Price :Tsh </Col>
+                        <Col xs={10} lg={4} style={colStyle2} >{product.price} </Col>
                     </Row>
                     <Row style={rowStyle}>
-                        <Col span={4} style={colStyle}> Category : </Col>
-                        <Col span={4} style={colStyle2} >{product.category}</Col>
+                        <Col xs={14} lg={4}style={colStyle}> Category : </Col>
+                        <Col xs={10} lg={4}style={colStyle2} >{product.category}</Col>
                     </Row>
                     <Row style={rowStyle}>
-                        <Col span={4} style={colStyle}> Location : </Col>
-                        <Col span={4} style={colStyle2} >{product.location}</Col>
+                        <Col xs={12} lg={4} style={colStyle}> Location : </Col>
+                        <Col xs={10} lg={4} style={colStyle2} >{product.location}</Col>
                     </Row>
                 </Col>
-                <Col span={12}>
+                <Col  xs={24} lg={12}>
                     <Divider orientation="center"> Description </Divider>
                     <p>Description Goes Here!.</p>
                 </Col>
                 </Row>
         </Card>
-
+        </Col>
+        </Row>
         </>
     )
 }

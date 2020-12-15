@@ -28,8 +28,8 @@ export const Home = (props) => {
     const [signUpModal, setsignUpModal] = useState(false);
     const [loginModal, setloginModal] = useState(false);
     const [isFiltered, setisFiltered] = useState(false)
-    const [collapsed, setcollapsed] = useState(false)
-    const [viewMode, setviewMode] = useState(true)
+    const [collapsed, setcollapsed] = useState(true)
+    const [viewMode, setviewMode] = useState(false)
 
     const filterCategory = (cat) => {
         setisFiltered(true)
@@ -49,8 +49,8 @@ export const Home = (props) => {
                             { arrayToMap.map((data) => {return <Col  xs={24} lg={6} key={data.id}> <ProductCard product={data} setviewMode={setviewMode} setId={setselectedProduct} />  </Col>})}
                         </Row>
 
-// const productInfo = <ProductDetails product={products[selectedProduct-1]} />
-const productInfo = <ProductDetails product={products[1]} />
+const productInfo = <ProductDetails product={products[selectedProduct-1]} />
+// const productInfo = <ProductDetails product={products[1]} />
     const toggle = () => {
         setcollapsed(!collapsed)
     }
@@ -136,7 +136,7 @@ const productInfo = <ProductDetails product={products[1]} />
                             </Header>
                              </Row>
                             <Content style={{backgroundColor : 'gray'}}>
-                                <Card style={{padding : 15,}}>
+                                <Card style={{padding : 5,}}>
                                     {contents}
                                     <LoginForm setloginModal={setloginModal} loginModal={loginModal} setrender={setrender} setsignUpModal={setsignUpModal} />
                                     <SignUpForm setsignUpModal={setsignUpModal} signUpModal={signUpModal} />
